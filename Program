@@ -1,0 +1,30 @@
+class Artist {
+    constructor(name, albumSales, awards, fanEngagement) {
+        this.name = name;
+        this.albumSales = albumSales; // in millions
+        this.awards = awards; // number of awards won
+        this.fanEngagement = fanEngagement; // engagement score out of 100
+    }
+
+    getScore() {
+        return (this.albumSales * 0.5) + (this.awards * 2) + (this.fanEngagement * 0.3);
+    }
+}
+
+const drake = new Artist("Drake", 170, 4, 85);
+const kendrick = new Artist("Kendrick Lamar", 75, 13, 90);
+
+function compareArtists(artist1, artist2) {
+    const score1 = artist1.getScore();
+    const score2 = artist2.getScore();
+
+    if (score1 > score2) {
+        return `${artist1.name} is the better artist.`;
+    } else if (score1 < score2) {
+        return `${artist2.name} is the better artist.`;
+    } else {
+        return "Both artists are equally talented.";
+    }
+}
+
+console.log(compareArtists(drake, kendrick));
